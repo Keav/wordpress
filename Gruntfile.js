@@ -19,7 +19,7 @@ module.exports = function (grunt) {
                 },
                 files: [{
                     expand: true,
-                    cwd: 'src/',
+                    cwd: 'wordpress/',
                     src: ['**/*.jpg', '**/*.png', '**/*.gif'],
                     dest: 'dist/'
                 }, ]
@@ -74,7 +74,7 @@ module.exports = function (grunt) {
                     'head-script-disabled': true,
                     'style-disabled': true
                 },
-                src: ['src/index.html']
+                src: ['wordpress/index.html']
             }
         },
 
@@ -85,7 +85,7 @@ module.exports = function (grunt) {
                     collapseWhitespace: true
                 },
                 files: { // Dictionary of files
-                    'dist/index.html': 'src/index.html' // 'destination': 'source'
+                    'dist/index.html': 'wordpress/index.html' // 'destination': 'source'
 
                 }
             },
@@ -99,7 +99,7 @@ module.exports = function (grunt) {
                     precision: 10,
                 },
                 files: {
-                    'src/css/sass.css': 'src/scss/sass.scss'
+                    'wordpress/css/sass.css': 'wordpress/scss/sass.scss'
                 }
             }
         },
@@ -108,11 +108,11 @@ module.exports = function (grunt) {
             dist: {
                 options: {
                     require: 'susy',
-                    sassDir: 'src/scss',
-                    cssDir: 'src/css',
-                    javascriptsDir: 'src/js',
-                    fontsDir: 'src/fonts',
-                    imagesDir: 'src/images',
+                    sassDir: 'wordpress/scss',
+                    cssDir: 'wordpress/css',
+                    javascriptsDir: 'wordpress/js',
+                    fontsDir: 'wordpress/fonts',
+                    imagesDir: 'wordpress/images',
                     outputStyle: 'expanded'
                 }
             }
@@ -144,7 +144,7 @@ module.exports = function (grunt) {
             },
             dist: {
                 files: {
-                    'dist/css/tidy.css': ['src/index.html']
+                    'dist/css/tidy.css': ['wordpress/index.html']
                 }
             }
         },
@@ -153,7 +153,7 @@ module.exports = function (grunt) {
             build: {
                 files: [{
                     expand: true,
-                    cwd: 'src/',
+                    cwd: 'wordpress/',
                     src: ['**/*.css', '!**/*.min.css', '!**/*.map'],
                     dest: 'dist/',
                     ext: '.min.css',
@@ -171,9 +171,9 @@ module.exports = function (grunt) {
             files: {
                 expand: true,
                 flatten: true,
-                cwd: 'src/css/',
+                cwd: 'wordpress/css/',
                 src: '*.css',
-                dest: 'src/css/'
+                dest: 'wordpress/css/'
             }
         },
 
@@ -187,14 +187,14 @@ module.exports = function (grunt) {
                     jQuery: true
                 },
             },
-            uses_defaults: ['src/js/custom.js', 'Gruntfile.js'],
+            uses_defaults: ['wordpress/js/custom.js', 'Gruntfile.js'],
         },
 
         uglify: {
             build: {
                 files: [{
                     expand: true,
-                    cwd: 'src/',
+                    cwd: 'wordpress/',
                     src: ['**/*.js', '!**/*.min.js', '!**/js/foundation/**', '!**/js/vendor/**'],
                     dest: 'dist/',
                     ext: '.min.js',
@@ -219,7 +219,7 @@ module.exports = function (grunt) {
                 // Files to hash
                 src: [
                     // WARNING: These files will be renamed!
-                    'src/**/*.css', 'src/**/*.js', '!**/*.min.*', '!**/js/foundation/**', '!**/js/vendor/**'
+                    'wordpress/**/*.css', 'wordpress/**/*.js', '!**/*.min.*', '!**/js/foundation/**', '!**/js/vendor/**'
                 ],
                 // File that refers to above files and needs to be updated with the hashed name
                 dest: 'dist/index.html',
@@ -244,7 +244,7 @@ module.exports = function (grunt) {
             main: {
                 files: [{
                     expand: true,
-                    cwd: 'src/',
+                    cwd: 'wordpress/',
                     src: [
                         '**/*',
                         '!**/*.css',
@@ -266,7 +266,7 @@ module.exports = function (grunt) {
             others: {
                 files: [{
                     expand: true,
-                    cwd: 'src/',
+                    cwd: 'wordpress/',
                     src: ['js/jquery**.min.js', 'js/foundation.min.js', '**/.htaccess', '**/js/foundation/**', '**/js/vendor/**'],
                     dest: 'dist/',
                 }]
@@ -317,7 +317,7 @@ module.exports = function (grunt) {
                     livereload: true,
                     hostname: 'localhost',
                     port: 9001,
-                    base: 'src/',
+                    base: 'wordpress/',
                     open: true
                 }
             }
@@ -328,11 +328,11 @@ module.exports = function (grunt) {
             //    livereload: true
             },
             sass: {
-                files: ['src/scss/sass.scss'],
+                files: ['wordpress/scss/sass.scss'],
                 tasks: ['sass'],
             },
             livereload: {
-                files: ['src/**/*.html', 'src/**/*.css', 'src/**/*.js'],
+                files: ['wordpress/**/*.html', 'wordpress/**/*.php', 'wordpress/**/*.css', 'wordpress/**/*.js'],
                 options: {livereload: true}
             }
         }
